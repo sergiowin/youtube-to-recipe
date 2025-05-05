@@ -11,6 +11,7 @@ services:
     volumes:
       - ./backend:/app
       - ./backend/data:/app/data
+      - ./.env:/app/.env
     networks:
       - app-network
 
