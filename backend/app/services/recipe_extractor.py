@@ -12,7 +12,7 @@ class RecipeExtractor:
         """Transcribes audio file to text using OpenAI's Audio API"""
         try:
             with open(audio_path, "rb") as audio_file:
-                transcript = openai.audio.transcriptions.create(
+                transcript = openai.Audio.transcribe(
                     model="whisper-1",
                     file=audio_file,
                     response_format="text"
@@ -25,13 +25,12 @@ class RecipeExtractor:
     def extract_recipe(self, transcription: str) -> Optional[Dict]:
         """Extracts recipe information from transcribed text using OpenAI"""
         try:
-            response = openai.chat.completions.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant that extracts recipe information from text. Extract the title(based upon the transcript), ingredients (as a list), instructions (as steps), cooking time, and servings if available. Respond ONLY with a valid JSON object. If content is unrelated to food, respond with a message stating that content is unrelated to food."},
                     {"role": "user", "content": transcription}
-                ],
-                response_format={ "type": "json_object" }
+                ]
             )
             
             # Parse the response
