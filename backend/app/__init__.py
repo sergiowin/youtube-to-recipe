@@ -23,6 +23,12 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///instance/recipes.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
+    # Ensure instance folder exists
+    try:
+        os.makedirs(app.instance_path)
+    except OSError:
+        pass
+    
     # Initialize CORS
     CORS(app)
     
