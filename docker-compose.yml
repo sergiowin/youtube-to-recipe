@@ -11,6 +11,7 @@ services:
       - DATABASE_URL=sqlite:////app/instance/recipes.db
     volumes:
       - ./backend:/app
+      - ./backend/instance:/app/instance
     networks:
       - app-network
 
