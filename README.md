@@ -11,6 +11,54 @@ A web application that extracts recipe information from YouTube Shorts videos. T
 - Modern React frontend interface
 - RESTful Flask backend API
 
+## System Architecture
+
+### Backend Components
+
+1. **YouTube Service (`youtube.py`)**
+   - Handles YouTube video URL validation and processing
+   - Extracts video IDs from various YouTube URL formats
+   - Fetches video transcripts using the YouTube Transcript API
+   - Validates video URLs and transcript availability
+
+2. **Recipe Extractor (`recipe_extractor.py`)**
+   - Uses OpenAI's Whisper model for audio transcription
+   - Leverages GPT-3.5 to extract structured recipe information
+   - Processes transcripts to identify:
+     - Recipe title
+     - Ingredients list
+     - Step-by-step instructions
+     - Cooking time
+     - Number of servings
+
+3. **Storage Service (`storage.py`)**
+   - Manages recipe data persistence using JSON storage
+   - Provides CRUD operations for recipes
+   - Maintains recipe metadata including creation timestamps
+   - Handles data validation and error cases
+
+4. **API Routes (`routes.py`)**
+   - RESTful endpoints for recipe management:
+     - `GET /recipes`: Retrieve all recipes
+     - `POST /recipes/process`: Process new YouTube videos
+     - `DELETE /recipes/<id>`: Remove recipes
+   - Handles request validation and error responses
+   - Manages API authentication and rate limiting
+
+### Frontend Components
+
+1. **React Application**
+   - Built with Vite for optimal development experience
+   - Uses Tailwind CSS for modern, responsive styling
+   - Implements a clean, intuitive user interface
+
+2. **Key Features**
+   - Video URL input and validation
+   - Recipe display with organized sections
+   - Navigation between multiple recipes
+   - Recipe management (view/delete)
+   - Responsive design for all devices
+
 ## Prerequisites
 
 - Python 3.9 or higher
@@ -98,16 +146,17 @@ recipe-shorts-app/
 ├── backend/
 │   ├── app/
 │   │   ├── services/
-│   │   │   ├── recipe_extractor.py
-│   │   │   └── youtube.py
-│   │   └── models/
-│   │       └── recipe.py
+│   │   │   ├── recipe_extractor.py    # AI-powered recipe extraction
+│   │   │   ├── youtube.py            # YouTube video processing
+│   │   │   └── storage.py            # Recipe data persistence
+│   │   └── api/
+│   │       └── routes.py             # API endpoints
 │   ├── requirements.txt
 │   └── run.py
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx
-│   │   └── main.jsx
+│   │   ├── App.jsx                   # Main application component
+│   │   └── main.jsx                  # Application entry point
 │   └── package.json
 ├── docker-compose.yml
 ├── Dockerfile.backend
