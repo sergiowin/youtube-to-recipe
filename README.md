@@ -73,7 +73,7 @@ A web application that extracts recipe information from YouTube Shorts videos. T
 1. Clone the repository:
 ```bash
 git clone [repository-url]
-cd recipe-shorts-app
+cd youtube-to-recipe
 ```
 
 2. Create a `.env` file in the root directory:
