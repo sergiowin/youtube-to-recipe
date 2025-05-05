@@ -8,10 +8,9 @@ services:
     environment:
       - FLASK_APP=app
       - FLASK_ENV=development
-      - DATABASE_URL=sqlite:///data/recipes.db
+      - DATABASE_URL=sqlite:////app/instance/recipes.db
     volumes:
       - ./backend:/app
-      - recipe_data:/data
     networks:
       - app-network
 

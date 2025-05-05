@@ -7,10 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Create data directory for SQLite database
-RUN mkdir -p /data && chmod 777 /data
+# Create instance directory for SQLite database
+RUN mkdir -p /app/instance && chmod 777 /app/instance
 
 EXPOSE 5000
 
-# Use shell form of CMD to run multiple commands
 CMD flask db upgrade && python -m flask run --host=0.0.0.0 
