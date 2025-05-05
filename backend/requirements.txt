@@ -1,0 +1,27 @@
+# Web Framework
+flask==3.0.2
+flask-cors==4.0.0
+
+# Database
+flask-sqlalchemy==3.1.1
+alembic==1.13.1
+flask-migrate==4.0.5
+
+# YouTube Video Processing
+yt-dlp==2024.3.10
+
+# API and Schema
+flask-restful==0.3.10
+marshmallow==3.20.2
+flask-marshmallow==1.1.0
+marshmallow-sqlalchemy==1.0.0
+
+# Environment Variables
+python-dotenv==1.0.1
+
+# OpenAI Integration
+openai==1.12.0
+
+# Utils
+requests==2.31.0
+python-magic==0.4.27 
