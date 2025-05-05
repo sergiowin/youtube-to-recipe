@@ -12,8 +12,5 @@ RUN mkdir -p /data && chmod 777 /data
 
 EXPOSE 5000
 
-# Create startup script
-RUN echo '#!/bin/bash\nflask db upgrade\npython -m flask run --host=0.0.0.0' > /app/start.sh && \
-    chmod +x /app/start.sh
-
-CMD ["/app/start.sh"] 
+# Use shell form of CMD to run multiple commands
+CMD flask db upgrade && python -m flask run --host=0.0.0.0 
