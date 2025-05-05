@@ -3,10 +3,18 @@ import traceback
 from typing import Dict, Optional
 import os
 import json
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
 
 class RecipeExtractor:
     def __init__(self):
-        openai.api_key = os.getenv('OPENAI_API_KEY')
+        api_key = os.getenv('OPENAI_API_KEY')
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY environment variable is not set")
+        openai.api_key = api_key
 
     def transcribe_audio(self, audio_path: str) -> str:
         """Transcribes audio file to text using OpenAI's Audio API"""

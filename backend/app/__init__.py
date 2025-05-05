@@ -4,8 +4,9 @@ from flask_marshmallow import Marshmallow
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from both root and app directory
+load_dotenv()  # Load from root directory
+load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))  # Load from app directory
 
 # Initialize extensions
 ma = Marshmallow()
