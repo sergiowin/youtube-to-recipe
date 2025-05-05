@@ -3,35 +3,33 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile.backend
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:
-      - FLASK_APP=run.py
+      - FLASK_APP=app
       - FLASK_ENV=development
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DATABASE_URL=sqlite:///recipes.db
     volumes:
       - ./backend:/app
     networks:
-      - recipe-network
+      - app-network
 
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
-      - "5173:5173"
+      - "3000:3000"
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    environment:
-      - VITE_API_BASE=http://localhost:5000/api
     depends_on:
       - backend
     networks:
-      - recipe-network
+      - app-network
 
 networks:
-  recipe-network:
+  app-network:
     driver: bridge 

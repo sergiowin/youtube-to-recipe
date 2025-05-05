@@ -35,4 +35,8 @@ def create_app():
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
     
+    # Create database tables
+    with app.app_context():
+        db.create_all()
+    
     return app 
