@@ -1,11 +1,10 @@
-# Recipe Shorts App
+# Youtube Recipe App
 
-A web application that extracts recipe information from YouTube Shorts videos. The application transcribes the audio, uses AI to extract recipe details, and presents them in an organized, appealing format.
+A web application that extracts recipe information from YouTube videos. The application extracts the transcript, uses AI to extract recipe details, and presents them in an organized, appealing format.
 
 ## Features
 
-- YouTube Shorts video processing
-- Audio transcription using OpenAI Whisper
+- YouTube transcript processing
 - AI-powered recipe extraction using GPT-3.5
 - Recipe storage and management
 - Modern React frontend interface
@@ -195,6 +194,3 @@ recipe-shorts-app/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
