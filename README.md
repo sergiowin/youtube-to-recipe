@@ -5,7 +5,7 @@ A web application that extracts recipe information from YouTube videos. The appl
 ## Features
 
 - YouTube transcript processing
-- AI-powered recipe extraction using GPT-3.5
+- AI-powered recipe extraction using GPT-3o.mini
 - Recipe storage and management
 - Modern React frontend interface
 - RESTful Flask backend API
